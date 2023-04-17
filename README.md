@@ -1,4 +1,4 @@
-# Open ClassEextraction-to-datalake
+# Open Class Extraction-to-datalake
 
 Orquestador implementado en SQL Server Integration Services para subir datos a una cuenta de almacenamiento.
 
