@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="std_salesOrderDetail"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{9AF85D1E-91FD-4D78-9809-DFA1FEE13C48}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{520AD1B6-728C-49D8-A694-EF5CAA6E8408}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -28,7 +28,7 @@
           ConnectByProxy="False">
           <AccountKey
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0ad2zCQny0eYBBXlXJE2ogAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC3l2d3O/f42SanR0RudAe1oHVewObM4MfjMvo7r5xL7gAAAAAOgAAAAAIAACAAAACiOq892SgND+B6f+KZ+syxhoGwoa5QfSJAghOTL7/778AAAADf6EcAi19F/hGHXYoCia7Dz15gbxHqomz3PpWDRmYTvUFdPV8h4nkGbYgKWqpVaPhVH9h4CMxD/b9uwctaVsaTbPRkOqpoBNLdz8VdSRYRedF6fHWD6EmNJBocSv4MWPIVTiIabpQUlHNYhgKW03K4RZdf+ngR6XU8VGoKZNMlCNTekivvosYg7HrQYtrawE0KkL6MQvKrKqXzSOUcsErWSqaAob991Dl/vGAnY4ewZoZoK6ViO+V3GeMKrGDh1KtAAAAAnxbZPtXJ+24Suoolg4giDoCmWWgK8Lxfzy/zascX/7dA3LXGzBOWY6cLZmJ/5YHsNXpOQ43u8KoQxqXQGKyTKw</AccountKey>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0ad2zCQny0eYBBXlXJE2ogAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADdhTDFRViietyIkRmGZ+X3CCYIzqvF8dPIcvlOZvdr9wAAAAAOgAAAAAIAACAAAABQWolHfl06VID2GjhfpGK7goCX2Pz1SXC/uE6A2ff7ZsAAAAAos9hU9KWkYfZvurrDSrGTzCrDllhPviNCzksiPb4Cfjnz/EHJSVbYEcpUvkq0GawWNrH6bOhNc8e/W9Feomg/Lr3HApKGIb+56374T/nxr2oEIouznsTxt0rvx6uJW0fMvYM3rWynGMfepMrAVLb6jhWLwm2Ijh/eRNY2pdZLmgNGTwjakapDO00iBi4RP7G3uWqyUCK5tOR62BS/Q2vNXLbsq34nHp5YBq5v/4kocumFTmS6PHCphI8rbRKCnsRAAAAAEdNql4JvzMUfuumsxv/W/SN/izFxt+1B65E+UegqQaQmPa8c+wJnA+PdFTpBMrsLiFHcga35/PyeKqlefUMBbQ</AccountKey>
         </AzureStorageConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -188,7 +188,7 @@
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:PropertyExpression
-        DTS:Name="[Flexible File Destination].[FolderPath]">"raw/AdventureWorks2019/" + (DT_WSTR, 8)(YEAR(@[System::CreationDate])*10000+MONTH(@[System::CreationDate])*100+DAY(@[System::CreationDate])) + "/"</DTS:PropertyExpression>
+        DTS:Name="[Flexible File Destination].[FolderPath]">"raw/AdventureWorks2019/" + (DT_WSTR, 8)(YEAR(@[System::StartTime])*10000+MONTH(@[System::StartTime])*100+DAY(@[System::StartTime])) + "/"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -209,7 +209,7 @@
                   dataType="System.String"
                   description="Folder Path"
                   expressionType="Notify"
-                  name="FolderPath">raw/AdventureWorks2019/20230417/</property>
+                  name="FolderPath">raw/AdventureWorks2019/20230418/</property>
                 <property
                   dataType="System.String"
                   description="File Name"
@@ -948,9 +948,17 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="251,42"
+          Id="Package\Establecer Ultima fecha modificacion"
+          TopLeft="5.50000000000006,413.5" />
+        <NodeLayout
           Size="224,42"
           Id="Package\Genera un Id para la ejecución"
           TopLeft="19,5.5" />
+        <NodeLayout
+          Size="110,42"
+          Id="Package\Sql inc"
+          TopLeft="75,208.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\Tarea Flujo de datos"
@@ -981,24 +989,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="110,42"
-          Id="Package\Sql inc"
-          TopLeft="76,209.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="131,149.5">
+          TopLeft="130.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59"
               Start="0,0"
-              End="0,52.5">
+              End="0,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1009,18 +1013,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="131,251.5">
+          TopLeft="130.5,250.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,61"
               Start="0,0"
-              End="0,52.5">
+              End="0,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1029,10 +1033,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="251,42"
-          Id="Package\Establecer Ultima fecha modificacion"
-          TopLeft="5.50000000000006,413.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="131,353.5">
